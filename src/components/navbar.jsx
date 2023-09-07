@@ -16,7 +16,7 @@ return (
                         <a className="nav-link" href="/">Inicio</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/acerca-de">Acerca de</a>
+                        <a className="nav-link" href="/acerca-de">Productos</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="/contacto">Contacto</a>

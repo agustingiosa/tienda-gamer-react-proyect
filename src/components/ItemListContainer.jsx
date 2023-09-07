@@ -12,15 +12,15 @@ const ItemListContainer = (props) => {
                     addToCart={props.addToCart}
                 ></ListItem>
                 <ListItem
-                    name="Yuca" 
-                    price="1500" 
-                    url = '../src/assets/sample img.png' 
+                    name="Mother MSI A520M-A PRO DDR4 AM4 " 
+                    price="77.000" 
+                    url = 'https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_21848_Mother_MSI_A520M-A_PRO_DDR4_AM4_29d05f8c-grn.jpg' 
                     addToCart={props.addToCart}
                 ></ListItem>
                 <ListItem 
-                    name="Tomate" 
-                    price="2000" 
-                    url = '../src/assets/sample img.png' 
+                    name="Gabinete Corsair Crystal 465X RGB iCue Smart Black Mid Tower" 
+                    price="90.000" 
+                    url = 'https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_18529_Gabinete_Corsair_Crystal_465X_RGB_iCue_Smart_Black_Mid_Tower_b2ac7974-grn.jpg' 
                     addToCart={props.addToCart}
                 ></ListItem>
             </div>
