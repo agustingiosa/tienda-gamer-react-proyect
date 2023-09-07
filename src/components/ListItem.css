@@ -1,0 +1,48 @@
+.items {
+    border: 0.2rem solid black;
+    border-radius: 5%;
+    margin: 2rem;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.items img {
+    border-bottom: 0.1rem solid black;
+}
+
+.tituloProducto {
+    font-size: 1rem;
+}
+
+.precioProducto {
+    font-size: 2rem;
+    color: orange;
+}
+
+.boton {
+    display: inline-block;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-align: center;	
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: orange;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+.boton:hover {
+    background-color: #FF8000;
+}
+
+.boton:active {
+    background-color: yellowgreen;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}

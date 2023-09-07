@@ -1,0 +1,13 @@
+.cart-widget {
+    display: inline-block;
+    background-color: white;
+    color: black;
+    padding: 8px 12px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.cart-item-count {
+    margin-left: 4px;
+}
