@@ -1,4 +1,4 @@
-import ListItem from "./ListItem";
+import ListItem from "../listItem/ListItem";
 import './ItemListContainer.css'
 
 const ItemListContainer = (props) => {
