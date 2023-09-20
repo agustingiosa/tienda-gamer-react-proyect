@@ -3,7 +3,7 @@ import { HomePage, ItemDetailPage, CheckoutPage } from "../pages";
 
 const routes = createBrowserRouter ([
     {
-            path: '/Home',
+            path: '/',
             element: <HomePage/>
     },
     {
@@ -11,7 +11,7 @@ const routes = createBrowserRouter ([
         element: <CheckoutPage/>
     },
     {
-        path: '../pages/ItemDetail',
+        path: '/ItemDetail',
         element: <ItemDetailPage/>
     },
 ])

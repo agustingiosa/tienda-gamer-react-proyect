@@ -1,8 +1,10 @@
+import Layout from "../../components/Layout/Layout"
+
 const ItemDetail = () => {
     return (
-        <h1>
-            ItemDetail
-        </h1>
+        <Layout>
+            
+        </Layout>
     )
 }
 
