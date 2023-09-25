@@ -22,6 +22,7 @@ const ItemListContainer = (props) => {
                     price="90.000" 
                     url = 'https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_18529_Gabinete_Corsair_Crystal_465X_RGB_iCue_Smart_Black_Mid_Tower_b2ac7974-grn.jpg' 
                     addToCart={props.addToCart}
+                    
                 ></ListItem>
             </div>
         </>

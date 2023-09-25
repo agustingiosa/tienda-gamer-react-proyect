@@ -16,10 +16,10 @@ return (
                         <a className="nav-link" href="/">Inicio</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/acerca-de">Productos</a>
+                        <a className="nav-link" href="/Productos">Productos</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/contacto">Contacto</a>
+                        <a className="nav-link" href="/Checkout">Checkout</a>
                     </li>
                 </ul>
             </div>
