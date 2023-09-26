@@ -45,35 +45,41 @@ const ItemListContainer = (props) => {
         : productos.filter((producto) => producto.categoria === categoriaSeleccionada);
 
     return (
-        <>  
-            <div className="categorias">
-                <h3>Categorías</h3>
-                <ul>
-                    {categorias.map((categoria) => (
-                        <li
-                            key={categoria}
-                            onClick={() => setCategoriaSeleccionada(categoria)}
-                            className={categoria === categoriaSeleccionada ? 'seleccionada' : ''}
-                        >
-                            {categoria}
-                        </li>
+        <>  <div className='container'>
+            <div className="sidebar">
+                <div className="categorias">
+                    <h3>Categorías</h3>
+                    <ul>
+                        {categorias.map((categoria) => (
+                            <li
+                                key={categoria}
+                                onClick={() => setCategoriaSeleccionada(categoria)}
+                                className={categoria === categoriaSeleccionada ? 'seleccionada' : ''}
+                            >
+                                {categoria}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+            <div className='content'>
+                <div className="productos container">
+                    {productosFiltrados.map((producto) => (
+                        <ListItem
+                            id={producto.id}
+                            name={producto.name}
+                            price={producto.price}
+                            url={producto.url}
+                            addToCart={props.addToCart}
+                            categoria={producto.categoria}
+                        />
                     ))}
-                </ul>
+                </div>
             </div>
-            <div className="productos container">
-                {productosFiltrados.map((producto) => (
-                    <ListItem
-                        id={producto.id}
-                        name={producto.name}
-                        price={producto.price}
-                        url={producto.url}
-                        addToCart={props.addToCart}
-                        categoria={producto.categoria}
-                    />
-                ))}
-            </div>
+        </div>
         </>
     );
 };
 
 export default ItemListContainer;
+

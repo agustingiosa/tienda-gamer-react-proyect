@@ -12,17 +12,19 @@ const Home = () => {
         setCart([...cart, item]);
         setCartItemCount(cartItemCount + 1);
     };
+    
+    const mostrarCategorias = false;
+
     return (
         <Layout>
             <div className="App">
                 <div className="estilosPrincipal">
                     <h2 className='subtitulo'>Productos destacados</h2>
-                    <ItemListContainer addToCart={addToCart} />
+                    <ItemListContainer addToCart={addToCart} mostrarCategorias={mostrarCategorias} />
                 </div>
             </div>
         </Layout>
     )
 }
 
-
-export default Home
+export default Home;
