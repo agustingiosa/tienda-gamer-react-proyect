@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import './ItemDetailContainer.css'
+import './ItemDetailContainer.css';
 
 const ItemDetailContainer = () => {
     const [productSelect, setProductSelect] = useState({});
@@ -52,10 +52,12 @@ const ItemDetailContainer = () => {
         const idProductParam = id.toString();
         const result = productsForFilter.find((prod) => prod.id === idProductParam);
 
-        setProductSelect(result);
+        if (result) {
+            setProductSelect(result);
+        } else {
+            console.error(`No se encontró ningún producto con el ID ${idProductParam}`);
+        }
     }, [id, productsForFilter]);
-
-
 
     const incrementQuantity = () => {
         setQuantity(quantity + 1);
@@ -69,24 +71,28 @@ const ItemDetailContainer = () => {
 
     return (
         <div className="box-item-detail">
-            <h1 className="item-title">{productSelect.name}</h1>
-            <div className="item-detail-container">
-                <div>
-                    <img src={productSelect.image} alt={productSelect.name} />
-                </div>
-                <div className='item-detail-container-add'>
-                    <p className="item-price">{productSelect.price}</p>
-                    <p className="item-description">{productSelect.description}</p>
-                    <div className="quantity-controls">
-                        <button className='quantity' onClick={decrementQuantity}>-</button>
-                        <span>{quantity}</span>
-                        <button className='quantity' onClick={incrementQuantity}>+</button>
+            {productSelect && (
+                <>
+                    <h1 className="item-title">{productSelect.name}</h1>
+                    <div className="item-detail-container">
+                        <div>
+                            <img src={productSelect.image} alt={productSelect.name} />
+                        </div>
+                        <div className='item-detail-container-add'>
+                            <p className="item-price">{productSelect.price}</p>
+                            <p className="item-description">{productSelect.description}</p>
+                            <div className="quantity-controls">
+                                <button className='quantity' onClick={decrementQuantity}>-</button>
+                                <span>{quantity}</span>
+                                <button className='quantity' onClick={incrementQuantity}>+</button>
+                            </div>
+                            <button className='boton' onClick={addToCart}>
+                                Agregar al carrito
+                            </button>
+                        </div>
                     </div>
-                    <button className='boton' onClick={addToCart}>
-                        Agregar al carrito
-                    </button>
-                </div>
-            </div>
+                </>
+            )}
         </div>
     );
 }

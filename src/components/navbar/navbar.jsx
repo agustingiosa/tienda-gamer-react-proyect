@@ -1,32 +1,24 @@
-import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import './navbar.css'
-import CartWidget from '../cartWidget/CartWidget'; 
 
-function Navbar({ cartItemCount }) {
-return (
-    <nav className="navbar navbar-expand-lg navbar-light ">
-        <div className="container">
-            <a className="navbar-brand" href="/">Tienda gamer</a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav ml-auto">
-                    <li className="nav-item">
-                        <a className="nav-link" href="/">Inicio</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/Productos">Productos</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/Checkout">Checkout</a>
-                    </li>
-                </ul>
-            </div>
-            <CartWidget itemCount={cartItemCount} />
-        </div>
-    </nav>
+function NavbarBootsrap() {
+    return (
+        <Navbar expand="lg" className="custom">
+            <Container>
+                <Navbar.Brand href="#home">GamingHouse</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto">
+                        <Nav.Link href="/">Inicio</Nav.Link>
+                        <Nav.Link href="/Productos">Productos</Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     );
 }
 
-export default Navbar;
+export default NavbarBootsrap;
