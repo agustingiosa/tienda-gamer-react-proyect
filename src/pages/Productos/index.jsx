@@ -16,7 +16,7 @@ const Productos = () => {
         <Layout>
             <div className="App">
                 <div className="estilosPrincipal">
-                    <h2 className='subtitulo'>Productos destacados</h2>
+                    <h2 className='subtitulo'>Productos</h2>
                     <ItemListContainer addToCart={addToCart} />
                 </div>
             </div>

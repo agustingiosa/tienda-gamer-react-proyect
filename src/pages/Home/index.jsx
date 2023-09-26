@@ -1,19 +1,28 @@
-import { Link } from "react-router-dom";
-import Layout from "../../components/Layout/Layout";
-import Destacados from "../../components/destacados/Destacados";
-import './estilosHome.css'
+import { useState } from 'react'
+import Layout from "../../components/Layout/Layout"
+import ItemListContainer from "../../components/itemListContainer/ItemListContainer"
+
+
 
 const Home = () => {
+    const [cart, setCart] = useState([]);
+    const [cartItemCount, setCartItemCount] = useState(0);
+
+    const addToCart = (item) => {
+        setCart([...cart, item]);
+        setCartItemCount(cartItemCount + 1);
+    };
     return (
         <Layout>
-            <div>
+            <div className="App">
                 <div className="estilosPrincipal">
                     <h2 className='subtitulo'>Productos destacados</h2>
-                    <Destacados/>
+                    <ItemListContainer addToCart={addToCart} />
                 </div>
             </div>
         </Layout>
     )
 }
+
 
 export default Home

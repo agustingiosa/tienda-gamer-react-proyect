@@ -12,7 +12,7 @@ const ListItem = (props) => {
             <img src={props.url} alt={props.name} />
             <h2 className='tituloProducto'>{props.name}</h2>
             <p className='precioProducto'> ${props.price}</p>
-            <Link to={`/product/${props.id}`} className='boton-link'>
+            <Link to={`/Productos/${props.id}`} className='botonLink'>
                 Ver detalles
             </Link>
             <button onClick={handleAddToCart} className='boton'>Agregar al carrito</button>
