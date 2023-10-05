@@ -1,28 +1,32 @@
-import { createBrowserRouter , RouterProvider } from "react-router-dom";
-import { HomePage, ItemDetailPage, CheckoutPage, ProductosPage } from "../pages";
-import ItemDetailContainer from '../components/itemDetailContainer/itemDetailContainer';
+import {createBrowserRouter , RouterProvider} from 'react-router-dom'
+import { CartPage, ItemDetailContainer, ItemListContainer, ProductosPage } from '../pages'
 
-const routes = createBrowserRouter ([
+const routes = createBrowserRouter([
     {
-            path: '/',
-            element: <HomePage/>
+        path: '/',
+        element: <ItemListContainer/>
     },
     {
-        path: '/Checkout',
-        element: <CheckoutPage/>
+        path:'/item/:idProduct',
+        element: <ItemDetailContainer /> 
     },
     {
-        path:'/Productos/:id',
-        element: <ItemDetailPage/>
+        path:'/category/:id',
+        element: <ItemListContainer />
     },
     {
-        path: '/Productos',
-        element: <ProductosPage/>
+        path:'/cart',
+        element: <CartPage />
     },
+    {
+        path:'/productos',
+        element: <ProductosPage />
+    },
+    
 ])
 
 const Navigation = () => {
-    return(
+    return ( 
         <RouterProvider router={routes}/>
     )
 }

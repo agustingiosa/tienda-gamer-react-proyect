@@ -1,12 +1,16 @@
+import {BsCart} from 'react-icons/bs'
+import { Badge } from '@mui/material'
+import { useContext } from 'react'
+import { CartCtx } from '../../context/CartContext'
 import './CartWidget.css'
 
-function CartWidget({ itemCount }) {
+const CartWidget = () => {
+    const {cart} = useContext(CartCtx)
     return (
-    <div className="cart-widget">
-        <span role="img" aria-label="Cart">🛒</span>
-        {itemCount > 0 && <span className="cart-item-count">{itemCount}</span>}
-    </div>
-    );
+        <Badge className='color' badgeContent={cart.length} >
+            <BsCart size={25} />
+        </Badge>
+    )
 }
 
-export default CartWidget;
+export default CartWidget

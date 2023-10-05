@@ -1,0 +1,21 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1); /* Tres columnas de igual ancho */
+    grid-gap: 20px; /* Espacio entre las celdas del grid */
+}
+.main-content {
+    display: flex;
+    flex-direction: row; /* Muestra NavbarSide y los productos en fila */
+    align-items: flex-start; /* Alinea los elementos en la parte superior */
+}
+
+  /* Ajusta el ancho de NavbarSide según tus necesidades */
+.navbarside {
+    left: -250px;
+    width: 250px; /* Ancho deseado para NavbarSide */
+}
+
+.tituloCategoria {
+    margin: 1rem;
+    border-bottom: 0.3rem solid black;
+}

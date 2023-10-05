@@ -1,0 +1,25 @@
+
+
+.items {
+    width: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem;
+    margin-top: 1rem;
+    padding: 1rem;
+} 
+
+.imagenProducto {
+    width: 5rem;
+    height: 5rem;
+}
+
+.btn {
+    width: 10rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

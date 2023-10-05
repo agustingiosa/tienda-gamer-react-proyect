@@ -1,11 +1,3 @@
-.estilosPrincipal {
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  flex-direction: column;
-}
-
-.subtitulo {
-  margin: 2rem;
-  font-size: 3rem;
+.styles{
+  border: 10px solid green;
 }

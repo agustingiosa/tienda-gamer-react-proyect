@@ -1,13 +1,19 @@
-import Navbar from '../navbar/Navbar'
+// Layout.jsx
+import React, { useState } from "react";
+import Navbar from "../Navbar/Navbar";
+import NavbarSide from "../SideNavbar/SideNavbar";
 
+const Layout = React.memo(({ children }) => {
+    const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
 
-function Layout({ children }) {
     return (
-        <div>
-            <Navbar/>
-            <main>{children}</main>
-        </div>
+        <>
+            <Navbar />
+            <div style={{ marginLeft: "250px" }}>
+                {children}
+            </div>
+        </>
     );
-}
+});
 
 export default Layout;

@@ -1,13 +1,9 @@
-.cart-widget {
-    display: inline-block;
-    background-color: white;
+.color {
     color: black;
-    padding: 8px 12px;
-    border-radius: 50%;
-    font-size: 16px;
-    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.cart-item-count {
-    margin-left: 4px;
+.color:hover {
+    transform: scale(1.1);
+    color: gray;
 }
