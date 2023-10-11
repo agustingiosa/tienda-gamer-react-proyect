@@ -5,6 +5,7 @@ import { productos } from "../../products";
 import Layout from "../../components/Layout/Layout";
 import { CartCtx } from "../../context/CartContext";
 import NavbarSide from "../../components/SideNavbar/SideNavbar";
+import './ItemDetail.css'
 
 const ItemDetail = () => {
   const { idProduct } = useParams();
@@ -31,12 +32,17 @@ const ItemDetail = () => {
         <p>Cargando . .</p>
       ) : (
         <>
-          <h1>{product.nombre}</h1> <br />
-          <img src={product.urlImage} />
-          <button onClick={() => addToCart(product.id)}>Añadir al carrito</button>
-          <h3>
-            Ir a <Link to={"/"}>Home</Link>
-          </h3>
+          <div className="detailBox">
+          <img className="imagenDetail" src={product.imagen} />
+            <div className="detailBoxP1">
+              <h1>{product.nombre}</h1> <br />
+              <p>{product.descripcion}</p>
+            </div>
+            <div className="detailBoxP2">
+              <button onClick={() => addToCart(product.id)}>Añadir al carrito</button>
+            </div>
+          </div>
+          <h3 ><Link className="botonVolver" to={"/"}>Volver</Link></h3>
         </>
       )}
     </Layout>

@@ -1,0 +1,53 @@
+.detailBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.3rem solid gray;
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 1rem 1rem 1rem 1rem;
+}
+
+.detailBoxP1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-right: 0.3rem solid gray;
+    padding-right: 1rem;
+}
+
+.detailBoxP2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 1rem;
+}
+
+.detailBoxP2 button {
+    height: 4rem;
+    width: 10rem;
+    border-radius: 1rem 1rem 1rem 1rem;
+    background-color: #0c6efc;
+    border: 0.1rem solid black;
+    color: white;
+}
+
+.detailBoxP2 button:hover {
+    background-color: #02ba16;
+    scale: 1.1;
+}
+
+.imagenDetail {
+    padding-right: 2rem;
+}
+
+.botonVolver {
+    text-decoration: none;
+    color: black;
+}
+
+.botonVolver:hover {
+    color: gray;
+}
