@@ -1,46 +1,35 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react";
 
-export const CartCtx= createContext()
+export const CartCtx = createContext();
 
-const CartContext = ({children}) => {
-
-    const [listProducts, setListProducts] = useState([])
-
-    const [cart, setCart] = useState([])
+const CartContext = ({ children }) => {
+    const [listProducts, setListProducts] = useState([]);
+    const [cart, setCart] = useState([]);
 
     const addToCart = (idProduct) => {
+        // Add item to the cart
+        setCart([...cart, { id: idProduct }]);
+    };
 
-        const findProduct = listProducts.find(product => product.id === idProduct)
-
-        // verificar si ya hay este prod en el carrito
-        if(cart.find(prod => prod.id === idProduct)){
-
-            const updatedCart = cart.map(prod =>
-                prod.id === idProduct
-                  ? { ...prod, quantity: prod.quantity < prod.stock ? prod.quantity + 1 : prod.quantity }
-                  : prod
-              );
-
-              // Actualizar el carrito con el producto actualizado
-              setCart(updatedCart);
+    // Load cart data from localStorage when the component mounts
+    useEffect(() => {
+        const storedCart = localStorage.getItem("cart");
+        if (storedCart) {
+            setCart(JSON.parse(storedCart));
         }
+    }, []);
 
+    // Save cart data to localStorage whenever it changes
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
+    console.log(cart)
+    return (
+        <CartCtx.Provider value={{ listProducts, setListProducts, cart, setCart, addToCart }}>
+            {children}
+        </CartCtx.Provider>
+        
+    );
+};
 
-        // verificar si hay stock
-
-
-        setCart([...cart, {...findProduct, quantity: 1}])
-    }
-
-
-
-
- return (
-    <CartCtx.Provider value={{listProducts, setListProducts, cart, setCart, addToCart}}>
-        {children}
-    </CartCtx.Provider>
- )
-
-}
-
-export default CartContext
+export default CartContext;

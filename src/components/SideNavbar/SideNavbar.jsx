@@ -1,8 +1,8 @@
-// NavbarSide.jsx
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { productos } from "../../products"; // Importa los datos de productos
-import './SideNavbar.css'
+import { collection, getDocs } from "firebase/firestore"; // Import Firestore functions
+import './SideNavbar.css';
+import { db } from "../../dataBase/db"; // Import your Firestore reference
 
 const NavbarSide = ({ categoriaSeleccionada, setCategoriaSeleccionada, mostrarInicio }) => {
     const [categorias, setCategorias] = useState([]);
@@ -12,11 +12,26 @@ const NavbarSide = ({ categoriaSeleccionada, setCategoriaSeleccionada, mostrarIn
         console.log("Categoría seleccionada:", categoria);
     };
 
+    const fetchCategories = async () => {
+        try {
+            const productsRef = collection(db, "productos");
+            const querySnapshot = await getDocs(productsRef);
+            const uniqueCategorias = new Set();
+
+            querySnapshot.forEach((doc) => {
+                const producto = doc.data();
+                uniqueCategorias.add(producto.categoria);
+            });
+
+            setCategorias([...uniqueCategorias]);
+        } catch (error) {
+            console.error("Error fetching categories:", error);
+        }
+    };
+
     useEffect(() => {
-        // Extraer categorías únicas de los productos y almacenarlas en el estado
-        const uniqueCategorias = [...new Set(productos.map((producto) => producto.categoria))];
-        setCategorias(uniqueCategorias);
-    }, []); // Ejecutar esto solo una vez al cargar el componente
+        fetchCategories(); // Fetch categories when the component mounts
+    }, []);
 
     return (
         <div className="sidebar">

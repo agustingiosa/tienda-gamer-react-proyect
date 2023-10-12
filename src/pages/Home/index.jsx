@@ -1,32 +1,45 @@
-// Home.jsx
 import React, { useContext, useEffect, useState } from "react";
+import { db } from "../../dataBase/db";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import Layout from "../../components/Layout/Layout";
 import Item from "../../components/Item/Item";
-import ItemList from "../../components/ItemList/ItemList";
-import { productos } from "../../products";
 import { CartCtx } from "../../context/CartContext";
 import { Ring } from "@uiball/loaders";
 import NavbarSide from "../../components/SideNavbar/SideNavbar";
-import './index.css';
+import "./index.css";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { listProducts, setListProducts } = useContext(CartCtx);
-  const [es, setEs] = useState(true);
-  const [message, setMessage] = useState(0);
-  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(""); // Nuevo estado para la categoría seleccionada
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
 
   useEffect(() => {
-    setTimeout(() => {
-      // Filtrar productos según la categoría seleccionada, o mostrar todos si no hay selección
-      const productosFiltrados = categoriaSeleccionada
-        ? productos.filter((prod) => prod.categoria === categoriaSeleccionada)
-        : productos;
+    const fetchProducts = async () => {
+      try {
+        const productsRef = collection(db, "productos");
+        const q = categoriaSeleccionada
+          ? query(productsRef, where("categoria", "==", categoriaSeleccionada))
+          : productsRef;
 
-      setListProducts(productosFiltrados);
-      setIsLoading(false);
-    }, 300);
-  }, [categoriaSeleccionada]); // Escuchar cambios en la categoría seleccionada
+        const querySnapshot = await getDocs(q);
+
+        const products = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        console.log("Productos:", products);
+        console.log("isLoading:", isLoading);
+
+        setListProducts(products);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, [categoriaSeleccionada]);
 
   return (
     <Layout>
@@ -40,15 +53,19 @@ const Home = () => {
         {!isLoading && (
           <div className="product-grid">
             {listProducts.map((prod) => (
-              <Item key={prod.id} id={prod.id} imagen={prod.imagen} nombre={prod.nombre} precio={`$${prod.precio}` } />
+              <Item
+                key={prod.id}
+                id={prod.id}
+                imagen={prod.imagen}
+                nombre={prod.nombre}
+                precio={`$${prod.precio}`}
+              />
             ))}
           </div>
         )}
       </div>
     </Layout>
-
   );
 };
 
 export default Home;
-
