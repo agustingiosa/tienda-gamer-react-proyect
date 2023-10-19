@@ -1,3 +1,4 @@
+// Importa las dependencias necesarias
 import React, { useContext, useEffect, useState } from "react";
 import { db } from "../../dataBase/db";
 import { collection, getDocs, query, where } from "firebase/firestore";
@@ -24,12 +25,9 @@ const Home = () => {
         const querySnapshot = await getDocs(q);
 
         const products = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
+          id: doc.id, // Utiliza el "id de documento" como clave única
           ...doc.data(),
         }));
-
-        console.log("Productos:", products);
-        console.log("isLoading:", isLoading);
 
         setListProducts(products);
         setIsLoading(false);
