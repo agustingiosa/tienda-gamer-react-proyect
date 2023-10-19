@@ -6,25 +6,34 @@ const CartContext = ({ children }) => {
     const [listProducts, setListProducts] = useState([]);
     const [cart, setCart] = useState([]);
 
-    // Mueve la lógica de addToCart aquí para que tenga acceso a cart y setCart
+    // Modifica la función addToCart en tu contexto del carrito
     const addToCart = (product) => {
-        const existingProduct = cart.find((item) => item.id === product.id);
+        // Clona el carrito actual para evitar mutar el estado directamente
+        const updatedCart = [...cart];
+
+        // Verifica si el producto ya está en el carrito
+        const existingProduct = updatedCart.find((item) => item.id === product.id);
 
         if (existingProduct) {
-            // El producto ya está en el carrito, solo actualiza la cantidad
-            const updatedCart = cart.map((item) => {
-                if (item.id === product.id) {
-                    return { ...item, cantidad: item.cantidad + 1 };
-                }
-                return item;
-            });
-
-            setCart(updatedCart);
+            // Si el producto ya está en el carrito, aumenta su cantidad en 1
+            existingProduct.cantidad += 1;
+            existingProduct.precioTotal = existingProduct.precio * existingProduct.cantidad;
         } else {
-            // El producto no está en el carrito, agrégalo con una cantidad inicial de 1
-            setCart([...cart, { ...product, cantidad: 1 }]);
+            // Si no está en el carrito, agrégalo con cantidad 1 y precioTotal igual al precio unitario
+            updatedCart.push({
+                id: product.id,
+                nombre: product.nombre,
+                cantidad: 1,
+                precio: product.precio,
+                precioTotal: product.precio, // Precio total inicial es igual al precio unitario
+            });
         }
+        
+        setCart(updatedCart);
+
+
     };
+
 
     return (
         <CartCtx.Provider value={{ listProducts, setListProducts, cart, setCart, addToCart }}>

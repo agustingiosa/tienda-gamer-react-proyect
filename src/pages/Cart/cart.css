@@ -2,3 +2,40 @@
     width: 10rem;
     height: 10rem;
 }
+
+.body {
+    padding-left: 17rem;
+    margin-top: 2rem;
+}
+
+.productosCarrito {
+    border: 0.3rem solid black;
+    border-radius: 1rem 1rem 1rem 1rem;
+    padding: 2rem;
+    width: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+li::marker {
+    content: "";
+}
+
+.cartelFinalizarCompra {
+    position: fixed;
+    left: 55rem;
+    top: 10rem;
+    border: 0.3rem solid black;
+    border-radius: 1rem 1rem 1rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30rem;
+}
+
+.cartelFinalizarCompra h2 {
+    border-bottom: 0.1rem solid black;
+}

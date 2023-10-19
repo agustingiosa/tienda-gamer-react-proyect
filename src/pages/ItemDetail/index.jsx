@@ -6,6 +6,7 @@ import { CartCtx } from "../../context/CartContext";
 import NavbarSide from "../../components/SideNavbar/SideNavbar";
 import './ItemDetail.css';
 import { db } from "../../dataBase/db"; // Import your Firestore reference
+import Item from "../../components/Item/Item";
 
 const ItemDetail = () => {
   const { idProduct } = useParams();
@@ -49,7 +50,7 @@ const ItemDetail = () => {
               <p>{product.descripcion}</p>
             </div>
             <div className="detailBoxP2">
-              <button onClick={() => addToCart(idProduct)}>Añadir al carrito</button>
+              <button onClick={() => addToCart({ id: idProduct, nombre: product.nombre, precio: product.precio })}>Añadir al carrito</button>
             </div>
           </div>
           <h3 ><Link className="botonVolver" to={"/"}>Volver</Link></h3>
