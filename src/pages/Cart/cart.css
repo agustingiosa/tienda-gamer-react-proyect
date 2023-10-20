@@ -39,3 +39,18 @@ li::marker {
 .cartelFinalizarCompra h2 {
     border-bottom: 0.1rem solid black;
 }
+
+.botonComprar {
+    margin: 2rem;
+    height: 4rem;
+    width: 10rem;
+    border-radius: 1rem 1rem 1rem 1rem;
+    background-color: green;
+    border: 0.1rem solid black;
+    color: white;
+}
+
+.botonComprar:hover {
+    background-color: #02ba16;
+    scale: 1.1;
+}

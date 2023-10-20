@@ -1,27 +1,26 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
-import { collection, doc, getDoc } from "firebase/firestore"; // Import Firestore functions
+import { collection, doc, getDoc } from "firebase/firestore"; 
 import Layout from "../../components/Layout/Layout";
 import { CartCtx } from "../../context/CartContext";
 import NavbarSide from "../../components/SideNavbar/SideNavbar";
 import './ItemDetail.css';
-import { db } from "../../dataBase/db"; // Import your Firestore reference
+import { db } from "../../dataBase/db"; 
 import Item from "../../components/Item/Item";
 
 const ItemDetail = () => {
   const { idProduct } = useParams();
-  const [product, setProduct] = useState(null); // Use null to indicate loading
+  const [product, setProduct] = useState(null); 
   const [isLoading, setIsLoading] = useState(true);
   const { addToCart } = useContext(CartCtx);
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const productRef = doc(db, "productos", idProduct); // Reference to the product by ID
+        const productRef = doc(db, "productos", idProduct);
         const productSnapshot = await getDoc(productRef);
 
         if (productSnapshot.exists()) {
-          // Check if the product exists
           setProduct(productSnapshot.data());
         } else {
           console.log("Product not found");

@@ -5,15 +5,28 @@ import NavbarSide from '../../components/SideNavbar/SideNavbar';
 import './cart.css'
 
 const Cart = () => {
-    const { cart } = useContext(CartCtx);
-    
+    const { cart , setCart } = useContext(CartCtx);
+
+    const calculateCartTotal = () => {
+        let total = 0;
+        for (const item of cart) {
+            total += item.precioTotal;
+        }
+        return total;
+    };
+
+    const handleFinalizarCompra = () => {
+        setCart([]);
+        localStorage.clear();
+    };
 
     return (
         <div>
             <NavbarBoots />
             <NavbarSide />
             <div className='cartelFinalizarCompra'>
-            
+                <h2>Total compra: ${calculateCartTotal().toFixed(2)}</h2>
+                <button className='botonComprar' onClick={handleFinalizarCompra}>Finalizar Compra</button>
             </div>
             <div className='body'>
                 <h1>Carrito de Compras</h1>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore"; // Import Firestore functions
+import { collection, getDocs } from "firebase/firestore";
 import './SideNavbar.css';
-import { db } from "../../dataBase/db"; // Import your Firestore reference
+import { db } from "../../dataBase/db";
 
 const NavbarSide = ({ categoriaSeleccionada, setCategoriaSeleccionada, mostrarInicio }) => {
     const [categorias, setCategorias] = useState([]);
@@ -30,7 +30,7 @@ const NavbarSide = ({ categoriaSeleccionada, setCategoriaSeleccionada, mostrarIn
     };
 
     useEffect(() => {
-        fetchCategories(); // Fetch categories when the component mounts
+        fetchCategories();
     }, []);
 
     return (
