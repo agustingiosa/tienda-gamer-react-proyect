@@ -3,8 +3,8 @@ import { CartCtx } from '../../context/CartContext';
 import NavbarBoots from '../../components/Navbar/Navbar';
 import NavbarSide from '../../components/SideNavbar/SideNavbar';
 import './cart.css';
-import { db } from '../../dataBase/db'; // Importa el objeto db desde tu archivo de configuración de Firebase
-import { collection, addDoc } from 'firebase/firestore'; // Importa collection y addDoc desde Firebase Firestore
+import { db } from '../../dataBase/db'; 
+import { collection, addDoc } from 'firebase/firestore'; 
 
 const Cart = () => {
     const { cart, setCart } = useContext(CartCtx);
@@ -20,27 +20,22 @@ const Cart = () => {
 
     const handleFinalizarCompra = async () => {
         try {
-            // Genera un nuevo documento en la colección "ordenes" al finalizar la compra
             const orderRef = await addDoc(collection(db, 'ordenes'), {
                 items: cart,
                 total: calculateCartTotal(),
                 fecha: new Date().toString(),
             });
 
-            // Obtén la ID de la orden generada
             const orderId = orderRef.id;
 
-            // Crea un objeto con la información de la orden
             const orderData = {
                 orderId,
                 total: calculateCartTotal(),
                 fecha: new Date().toString(),
             };
 
-            // Establece la información de la orden en el estado
             setOrderInfo(orderData);
 
-            // Reiniciar el carrito y limpiar el almacenamiento local
             setCart([]);
             localStorage.clear();
         } catch (error) {
@@ -49,13 +44,11 @@ const Cart = () => {
     };
 
     const handleBorrarCarrito = () => {
-        // Borra todos los elementos del carrito y el almacenamiento local
         setCart([]);
         localStorage.clear();
     };
 
     const handleEliminarItem = (itemId) => {
-        // Filtra el carrito para eliminar el elemento con el ID especificado
         const updatedCart = cart.filter((item) => item.id !== itemId);
         setCart(updatedCart);
     };
